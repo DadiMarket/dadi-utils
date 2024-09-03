@@ -3,7 +3,7 @@ games { 'gta5' }
 
 author 'DADI MARKET'
 description 'https://discord.gg/BFerjVVwJK'
-version '1.0.0'
+version '1.0.1'
 
 lua54 'yes'
 client_scripts {

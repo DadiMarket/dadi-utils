@@ -1,6 +1,5 @@
 -- if set to false it will only be checked when the vehicle is created, If set to true all vehicles are checked every 5 seconds
 -- set this setting to true if NPC cars are enabled on your server (because every time a car is spawned, the entitycreating event will triggered and this will cause major performance issues.)
-
 if Dadi.alwaysCheck then
 	CreateThread(function()
 		while true do

@@ -1,5 +1,3 @@
-ESX = exports["es_extended"]:getSharedObject()
-
 --Quita manitas
 Citizen.CreateThread(function()
 	while true do
@@ -62,7 +60,6 @@ Citizen.CreateThread(function()
 end)
 
 -- Evite que la cámara mire automáticamente a izquierda y derecha
-
 Citizen.CreateThread(function()
 	if Dadi.idleCam then
     	while true do
@@ -145,41 +142,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
- -- Probar colores de los coches
--- RegisterCommand("testcolor", function(source, args)
---     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
---     SetVehicleModKit(vehicle, 0)
---     SetVehicleColours(vehicle, tonumber(args[1]), tonumber(args[1]))
--- end)
-
--- /// TEXTOS 3D ///
--- Citizen.CreateThread(function() 
---     while true do   
-		
---         if DoesEntityExist(GetVehiclePedIsTryingToEnter(PlayerPedId())) then
---             local veh = GetVehiclePedIsTryingToEnter(PlayerPedId())
---             local lock = GetVehicleDoorLockStatus(veh)
-
---             if lock == 7 then
---                 SetVehicleDoorsLocked(veh, 2)
---             end
-                 
---             local pedd = GetPedInVehicleSeat(veh, -1)
-
---             if pedd then                   
---                 SetPedCanBeDraggedOut(pedd, false)
---             end             
---         end   
---         Citizen.Wait(1)	
--- 		if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 1840.5737, 3669.9814, 33.6801, true) <= 22 then 
--- 			Drawing.draw3DText(1847.0166, 3670.9006, 31.6903 + 1.700, "Mira el canal de guias en discord!", 4, 0.3, 0.2)
--- 			Drawing.draw3DText(1843.4349, 3665.7129, 33.8161, "Los empleos están distribuidos por el mapa! ", 4, 0.3, 0.2)
--- 			Drawing.draw3DText(1837.4723, 3666.9990, 33.6800 - .700, "Visita la comisaría o el hospital para conocer gente", 4, 0.3, 0.2)
--- 		end
--- 	end
--- end)
-
-
 Drawing = setmetatable({}, Drawing)
 Drawing.__index = Drawing
 
@@ -206,33 +168,3 @@ function Drawing.draw3DText(x,y,z,textInput,fontId,scaleX,scaleY)
     DrawText(0.0, 0.0)
     ClearDrawOrigin()
 end
-
--- /// ROBO A PERSONAS ///
--- exports["ox_target"]:addGlobalPlayer({
---     {
---         name = 'search:player',
---         icon = 'fa-solid fa-magnifying-glass',
---         label = 'Robar Jugador',
---         canInteract = function(entity, distance, coords, name, bone)
---             return IsEntityPlayingAnim(entity, 'dead', 'dead_a', 3)
---             or IsPedCuffed(entity)
---             or IsEntityPlayingAnim(entity, 'mp_arresting', 'idle', 3)
---             or IsEntityPlayingAnim(entity, 'missminuteman_1ig_2', 'handsup_base', 3)
---             or IsEntityPlayingAnim(entity, 'missminuteman_1ig_2', 'handsup_enter', 3)
---             or IsEntityPlayingAnim(entity, 'random@mugging3', 'handsup_standing_base', 3)
---         end,
--- 		onSelect = function(data)
--- 			TriggerEvent('dadi-utils:stealingItems')
--- 		end,
--- 		distance = 1.0
---     },
--- })
-
--- RegisterNetEvent('dadi-utils:stealingItems')
--- AddEventHandler('dadi-utils:stealingItems', function(closestPlayer)
--- 	local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
---     if closestPlayer ~= -1 and closestDistance <= 3.0 then
---         TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", GetPlayerServerId(closestPlayer))
--- 		print('persona encontrada:' ..closestPlayer)
---     end
--- end)
